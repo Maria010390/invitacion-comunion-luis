@@ -1,0 +1,1114 @@
+
+/* =====================================
+   CONFIGURACIÓN GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #F8F5EF;
+    font-family: Georgia, serif;
+    color: #9B8050;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.invitacion {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* =====================================
+   ESCENA PRINCIPAL
+===================================== */
+
+.escena {
+    min-height: 100vh;
+    padding: 35px 20px 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    transition: opacity 0.7s ease;
+}
+
+.encabezado {
+    position: relative;
+    z-index: 1;
+}
+
+h1, h2 {
+    color: #9B8050;
+}
+
+h1 {
+    font-size: clamp(22px, 5vw, 28px);
+    margin: 0;
+}
+
+h2 {
+    font-size: clamp(27px, 6vw, 38px);
+    margin: 5px 0 0;
+}
+
+/* =====================================
+   CONTENEDOR DEL SOBRE
+===================================== */
+
+.sobre {
+    position: relative;
+    flex: none;
+
+    width: min(90vw, 420px);
+    aspect-ratio: 1.52 / 1;
+
+    margin: 155px auto 35px;
+
+    isolation: isolate;
+
+    filter: drop-shadow(
+        0 10px 12px rgba(0,0,0,0.15)
+    );
+}
+
+/* =====================================
+   FONDO DEL SOBRE
+===================================== */
+
+.cuerpo-sobre {
+    position: absolute;
+    inset: 0;
+
+    background: #BDAE8C;
+    border-radius: 4px;
+    z-index: 1;
+}
+
+/* =====================================
+   TARJETA INTERIOR
+===================================== */
+
+.tarjeta {
+    position: absolute;
+
+    width: 72%;
+    height: 85%;
+
+    left: 14%;
+    bottom: 0;
+
+    background: #f1e5d2;
+
+    border: 1px solid #E5D8BE;
+    border-radius: 5px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+    z-index: 3;
+
+    transform: translateY(0);
+    opacity: 0;
+
+    transition:
+        transform 1.4s ease-in-out,
+        opacity 0.2s ease;
+}
+
+.tarjeta-contenido {
+    padding: 14px 10px;
+    text-align: center;
+}
+
+.simbolo {
+    display: block;
+    font-size: 30px;
+    color: #B69A65;
+}
+
+.subtitulo {
+    font-size: 15px;
+    margin: 12px 0;
+}
+
+.tarjeta h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.mensaje {
+    font-size: 12px;
+    line-height: 1.5;
+    color: #786647;
+}
+
+/* =====================================
+   FRENTE DEL SOBRE
+===================================== */
+
+.frente-sobre {
+    position: absolute;
+    inset: 0;
+
+    background: #C8B793;
+
+    clip-path: polygon(
+        0 0,
+        50% 53%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* =====================================
+   SOLAPA SUPERIOR
+===================================== */
+
+.solapa {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 53%;
+
+    background: linear-gradient(
+        135deg,
+        #DCCBA5,
+        #B8A782
+    );
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin: top center;
+    transform: scaleY(1);
+
+    transition: transform 1.2s ease-in-out;
+
+    z-index: 6;
+}
+
+/* =====================================
+   DECORACIONES DEL SOBRE
+===================================== */
+
+.sobre img {
+    position: absolute;
+    display: block;
+    height: auto;
+    max-width: none;
+    pointer-events: none;
+}
+
+/* CRUZ DORADA */
+
+.cruz {
+    width: 12%;
+    top: 25%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    z-index: 7;
+}
+
+/* SELLO DE CERA */
+
+.sello {
+    width: 18%;
+    top: 53%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    z-index: 8;
+}
+
+/* FLORES */
+
+.flores-izquierda,
+.flores-derecha {
+    width: 30%;
+    bottom: 0;
+    z-index: 5;
+}
+
+.flores-izquierda {
+    left: 0;
+}
+
+.flores-derecha {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* =====================================
+   ANIMACIÓN DE APERTURA
+===================================== */
+
+.sobre.abierto .solapa {
+    transform: scaleY(-1);
+    z-index: 2;
+}
+
+.sobre.abierto .tarjeta {
+    transform: translateY(-55%);
+    opacity: 1;
+
+    transition:
+        transform 1.4s ease-in-out 1.2s,
+        opacity 0.2s ease 1.2s;
+}
+
+.sobre:not(.abierto) .tarjeta {
+    transform: translateY(0);
+    opacity: 0;
+
+    transition:
+        transform 1.4s ease-in-out,
+        opacity 0.2s ease 1.4s;
+}
+
+/* =====================================
+   ANIMACIÓN CRUZ Y SELLO
+===================================== */
+
+.sello,
+.cruz {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sobre.abierto .sello,
+.sobre.abierto .cruz {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* =====================================
+   BOTONES
+===================================== */
+
+#abrir,
+#volver {
+    background: #B69A65;
+    color: white;
+
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#abrir:hover,
+#volver:hover {
+    background: #9B8050;
+}
+
+#abrir:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+/* =====================================
+   DESAPARICIÓN DE LA ESCENA
+===================================== */
+
+.escena.oculta {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* =====================================
+   INVITACIÓN FINAL
+===================================== */
+
+.invitacion-final {
+    position: fixed;
+    inset: 0;
+
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+
+    padding: 30px 16px;
+    overflow-y: auto;
+
+    background: #F8F5EF;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s linear 0.8s;
+}
+
+.invitacion-final.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0s;
+}
+
+/* =====================================
+   TARJETA FINAL VERTICAL
+===================================== */
+
+.tarjeta-final {
+    width: min(100%, 430px);
+    min-height: 680px;
+    flex-shrink: 0;
+
+    margin: 0 auto;
+
+    background-color: #f1e5d2;
+    background-image: url("FondoInvitacion.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    border: 1px solid #E5D8BE;
+    border-radius: 8px;
+
+    padding: 115px 42px 35px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.12);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transform: translateY(25px) scale(0.95);
+    transition: transform 0.8s ease;
+}
+
+.invitacion-final.visible .tarjeta-final {
+    transform: translateY(0) scale(1);
+}
+
+/* =====================================
+   TÍTULO DE LA TARJETA FINAL
+===================================== */
+
+.tarjeta-final .subtitulo {
+    font-size: 21px;
+    color: #80643C;
+    margin: 0 0 14px;
+}
+
+/* =====================================
+   NOMBRE DE LUIS
+===================================== */
+
+.tarjeta-final h3 {
+    font-size: clamp(26px, 6vw, 34px);
+    font-weight: normal;
+    color: #9B8050;
+    line-height: 1.2;
+
+    margin: 0 0 28px;
+}
+
+/* =====================================
+   MENSAJE PRINCIPAL
+===================================== */
+
+.tarjeta-final .mensaje-final {
+    max-width: 340px;
+
+    font-size: 16px;
+    line-height: 1.65;
+    color: #6F5A3D;
+
+    text-align: center;
+    margin: 0;
+}
+
+/* =====================================
+   SEPARADOR
+===================================== */
+
+.tarjeta-final .separador {
+    font-size: 25px;
+    color: #B69A65;
+    margin: 25px 0;
+}
+
+/* =====================================
+   MENSAJE DE LOS DETALLES
+===================================== */
+
+.tarjeta-final .proximamente {
+    max-width: 300px;
+
+    margin: 0;
+
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #9B8050;
+}
+
+/* =====================================
+   BOTÓN DE REGRESO
+===================================== */
+
+.invitacion-final #volver {
+    flex-shrink: 0;
+    margin: 0 auto 15px;
+}
+
+/* =====================================
+   ADAPTACIÓN PARA CELULARES
+===================================== */
+
+@media (max-width: 480px) {
+
+    .escena {
+        padding: 25px 12px;
+    }
+
+    .sobre {
+        margin-top: 110px;
+    }
+
+    .tarjeta-contenido {
+        padding: 8px 6px;
+    }
+
+    .tarjeta h3 {
+        font-size: 18px;
+    }
+
+    .mensaje {
+        font-size: 10px;
+    }
+
+    .tarjeta-final {
+        min-height: 680px;
+        padding: 95px 28px 30px;
+    }
+
+    .tarjeta-final .subtitulo {
+        font-size: 18px;
+    }
+
+    .tarjeta-final .mensaje-final {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .tarjeta-final .proximamente {
+        font-size: 13px;
+    }
+}
+
+/* =====================================
+   MOVIMIENTO REDUCIDO
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .solapa,
+    .tarjeta,
+    .sello,
+    .cruz,
+    .escena,
+    .invitacion-final,
+    .tarjeta-final {
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+}
+
+/* =====================================
+   CIERRE ORDENADO DEL SOBRE
+===================================== */
+
+.sobre.cerrando .tarjeta {
+    transform: translateY(0);
+    opacity: 1;
+
+    transition:
+        transform 1.4s ease-in-out,
+        opacity 0.2s ease 1.2s;
+}
+
+.sobre.cerrando.abierto .solapa {
+    transform: scaleY(-1);
+}
+
+.sobre.cerrando .sello,
+.sobre.cerrando .cruz {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sobre.cerrando:not(.abierto) .sello,
+.sobre.cerrando:not(.abierto) .cruz {
+    opacity: 1;
+    transition: opacity 0.3s ease 1.2s;
+}
+/* =====================================
+   NOMBRE CALIGRÁFICO DE LUIS
+===================================== */
+
+.tarjeta-final h3 {
+    font-family: 'Great Vibes', cursive;
+
+    font-size: clamp(38px, 8vw, 52px);
+    font-weight: normal;
+
+    color: #99703C;
+
+    line-height: 1.3;
+    text-align: center;
+
+    margin: 5px 0 25px;
+}
+/* AJUSTE FINAL DE LOS TEXTOS */
+
+.tarjeta-final {
+    padding-top: 105px;
+}
+
+.tarjeta-final .subtitulo {
+    margin-bottom: 8px;
+}
+
+.tarjeta-final h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(34px, 7vw, 44px);
+    line-height: 1.15;
+    margin: 0 0 16px;
+}
+
+.tarjeta-final .mensaje-final {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.tarjeta-final .separador {
+    margin: 18px 0;
+}
+
+.tarjeta-final .proximamente {
+    font-size: 14px;
+    line-height: 1.45;
+    max-width: 280px;
+}
+
+/* AJUSTE PARA CELULARES */
+
+@media (max-width: 480px) {
+    .tarjeta-final {
+        padding-top: 95px;
+    }
+
+    .tarjeta-final h3 {
+        font-size: clamp(32px, 8vw, 40px);
+    }
+
+    .tarjeta-final .mensaje-final {
+        font-size: 13px;
+    }
+
+    .tarjeta-final .proximamente {
+        font-size: 12px;
+    }
+}
+
+/* =====================================
+   APARICIÓN ELEGANTE DE LOS TEXTOS
+===================================== */
+
+/* Estado inicial: textos ocultos */
+
+.tarjeta-final .subtitulo,
+.tarjeta-final h3,
+.tarjeta-final .mensaje-final,
+.tarjeta-final .separador,
+.tarjeta-final .proximamente {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+/* Cuando aparece la invitación final */
+
+.invitacion-final.visible .tarjeta-final .subtitulo,
+.invitacion-final.visible .tarjeta-final h3,
+.invitacion-final.visible .tarjeta-final .mensaje-final,
+.invitacion-final.visible .tarjeta-final .separador,
+.invitacion-final.visible .tarjeta-final .proximamente {
+    animation: aparecerTexto 0.9s ease forwards;
+}
+
+/* Orden de aparición */
+
+.invitacion-final.visible .tarjeta-final .subtitulo {
+    animation-delay: 0.3s;
+}
+
+.invitacion-final.visible .tarjeta-final h3 {
+    animation-delay: 0.8s;
+}
+
+.invitacion-final.visible .tarjeta-final .mensaje-final {
+    animation-delay: 1.4s;
+}
+
+.invitacion-final.visible .tarjeta-final .separador {
+    animation-delay: 2s;
+}
+
+.invitacion-final.visible .tarjeta-final .proximamente {
+    animation-delay: 2.5s;
+}
+
+/* Movimiento suave */
+
+@keyframes aparecerTexto {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Accesibilidad: reducir movimiento */
+
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-final .subtitulo,
+    .tarjeta-final h3,
+    .tarjeta-final .mensaje-final,
+    .tarjeta-final .separador,
+    .tarjeta-final .proximamente {
+        opacity: 1;
+        transform: none;
+        animation: none !important;
+    }
+}
+
+/* =====================================
+   DATOS DE LA FIESTA
+===================================== */
+
+.datos-fiesta {
+    width: min(100%, 430px);
+    padding: 35px 28px;
+    background: #FFF9EF;
+    border: 1px solid #E5D8BE;
+    border-radius: 8px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+    text-align: center;
+    color: #786647;
+}
+
+.datos-fiesta h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 43px;
+    font-weight: normal;
+    color: #99703C;
+    margin: 0 0 12px;
+}
+
+.introduccion-fiesta {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 25px;
+}
+
+.dato {
+    margin: 22px 0;
+}
+
+.icono-dato {
+    display: block;
+    color: #B69A65;
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+.etiqueta-dato {
+    color: #9B8050;
+    font-weight: bold;
+    margin: 0 0 7px;
+}
+
+.dato p:not(.etiqueta-dato) {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.boton-fiesta {
+    display: block;
+    width: 100%;
+    max-width: 270px;
+    margin: 12px auto;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #B69A65;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.boton-fiesta:hover {
+    background: #9B8050;
+}
+
+@media (max-width: 480px) {
+    .datos-fiesta {
+        padding: 30px 22px;
+    }
+
+    .datos-fiesta h3 {
+        font-size: 38px;
+    }
+
+    .introduccion-fiesta {
+        font-size: 14px;
+    }
+}
+
+/* =====================================
+   CONFIRMACIÓN POR WHATSAPP
+===================================== */
+
+.confirmacion {
+    width: 100%;
+    text-align: center;
+}
+
+.opciones-whatsapp[hidden] {
+    display: none;
+}
+
+.opciones-whatsapp {
+    margin-top: 15px;
+    padding: 18px 12px;
+
+    background: #F7EEDC;
+    border: 1px solid #E5D8BE;
+    border-radius: 12px;
+}
+
+.opciones-whatsapp p {
+    color: #786647;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.boton-whatsapp {
+    display: block;
+    max-width: 270px;
+
+    margin: 12px auto;
+    padding: 13px 16px;
+
+    background: #66866A;
+    color: white;
+
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 15px;
+
+    transition: background 0.3s ease;
+}
+
+.boton-whatsapp:hover {
+    background: #4F7054;
+}
+
+/* =====================================
+   PANTALLA INDEPENDIENTE DE CELEBRACIÓN
+===================================== */
+
+.pantalla-celebracion {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 30px 16px 50px;
+
+    background: #F8F5EF;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        visibility 0s linear 0.7s;
+}
+
+.pantalla-celebracion.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        visibility 0s;
+}
+
+/* BOTONES PARA CAMBIAR DE PANTALLA */
+
+.boton-continuar,
+.boton-regresar {
+    display: block;
+    flex-shrink: 0;
+
+    margin: 5px auto 15px;
+    padding: 14px 24px;
+
+    max-width: 100%;
+
+    background: #B69A65;
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+
+    font-family: Georgia, serif;
+    font-size: 15px;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: background 0.3s ease;
+}
+
+.boton-continuar:hover,
+.boton-regresar:hover {
+    background: #9B8050;
+}
+
+/* CONSERVAR EL ESPACIO DE LA TARJETA */
+
+.pantalla-celebracion .datos-fiesta {
+    flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pantalla-celebracion {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* =====================================
+   FONDO DECORATIVO DE LA CELEBRACIÓN
+===================================== */
+
+.pantalla-celebracion {
+    background-color: #F8F5EF;
+    background-image: url("FondoInvitacion1.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+/* DATOS SOBRE EL FONDO DECORATIVO */
+
+.pantalla-celebracion .datos-fiesta {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    width: min(100%, 430px);
+    padding: 95px 35px 25px;
+    margin: 0 auto;
+}
+
+/* TITULO */
+
+.pantalla-celebracion .datos-fiesta h3 {
+    font-family: 'Great Vibes', cursive;
+    color: #99703C;
+    font-size: clamp(34px, 8vw, 43px);
+}
+
+/* TEXTO */
+
+.pantalla-celebracion .introduccion-fiesta,
+.pantalla-celebracion .dato p {
+    color: #6F5A3D;
+}
+
+/* BLOQUES DE FECHA, HORA Y LUGAR */
+
+.pantalla-celebracion .dato {
+    background: rgba(255, 249, 239, 0.82);
+    border: 1px solid #E5D8BE;
+    border-radius: 14px;
+
+    padding: 12px 15px;
+    margin: 14px 0;
+}
+
+/* BOTONES */
+
+.pantalla-celebracion .boton-fiesta {
+    background: #B69A65;
+    color: white;
+}
+
+.pantalla-celebracion .boton-fiesta:hover {
+    background: #9B8050;
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+
+@media (max-width: 480px) {
+    .pantalla-celebracion .datos-fiesta {
+        padding: 75px 22px 20px;
+    }
+
+    .pantalla-celebracion .dato {
+        padding: 10px;
+        margin: 12px 0;
+    }
+}
+
+/* =====================================
+   CORRECCIÓN DEL FONDO DE CELEBRACIÓN
+===================================== */
+
+/* Fondo exterior, sin imagen estirada */
+
+.pantalla-celebracion {
+    background: #F8F5EF;
+    background-image: none;
+
+    align-items: center;
+    padding: 25px 12px 45px;
+}
+
+/* Tarjeta vertical con el fondo original */
+
+.pantalla-celebracion .datos-fiesta {
+    width: min(100%, 430px);
+    min-height: 680px;
+
+    flex-shrink: 0;
+
+    margin: 0 auto;
+    padding: 100px 32px 35px;
+
+    background-color: #f1e5d2;
+    background-image: url("FondoInvitacion1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    border: 1px solid #E5D8BE;
+    border-radius: 8px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Bloques de información */
+
+.pantalla-celebracion .dato {
+    background: rgba(255, 249, 239, 0.93);
+    border: 1px solid #E5D8BE;
+    border-radius: 12px;
+
+    padding: 10px 12px;
+    margin: 12px 0;
+}
+
+/* Ajustes para celulares */
+
+@media (max-width: 480px) {
+    .pantalla-celebracion .datos-fiesta {
+        padding: 85px 25px 30px;
+    }
+
+    .pantalla-celebracion .dato {
+        padding: 9px;
+        margin: 10px 0;
+    }
+}
+/* FECHA LÍMITE DE CONFIRMACIÓN */
+
+.fecha-limite {
+    max-width: 300px;
+    margin: 20px auto 12px;
+    padding: 10px 14px;
+
+    font-family: Georgia, serif;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+
+    color: #80643C;
+    background: rgba(255, 249, 239, 0.88);
+
+    border: 1px solid #E5D8BE;
+    border-radius: 10px;
+}

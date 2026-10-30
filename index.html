@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Primera Comunión de Luis</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+<main class="invitacion">
+
+    <!-- PANTALLA 1: SOBRE -->
+
+    <section class="escena" id="escena">
+
+        <header class="encabezado">
+            <h1>Mi Primera Comunión</h1>
+            <h2>Luis Daniel Ledesma</h2>
+        </header>
+
+        <div class="sobre" id="sobre">
+
+            <div class="cuerpo-sobre"></div>
+
+            <div class="tarjeta">
+                <div class="tarjeta-contenido">
+
+                    <span class="simbolo">✝</span>
+
+                    <p class="subtitulo">
+                        Mi Primera Comunión
+                    </p>
+
+                    <h3>Luis Daniel Ledesma</h3>
+
+                    <p class="mensaje">
+                        Jesús, tú que eres luz,
+                        ilumina mis pasos.
+                        Tú que eres amor,
+                        guía mi corazón.
+                        En este día tan especial
+                        me alegra compartir contigo
+                        este momento tan especial.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="frente-sobre"></div>
+            <div class="solapa"></div>
+
+            <img src="Cruz.png"
+                 class="cruz"
+                 alt="Cruz dorada">
+
+            <img src="Sello.png"
+                 class="sello"
+                 alt="Sello de cera">
+
+            <img src="FloresIzquierda.png"
+                 class="flores-izquierda"
+                 alt="Flores blancas">
+
+            <img src="FloresIzquierda.png"
+                 class="flores-derecha"
+                 alt="">
+
+        </div>
+
+        <button id="abrir" type="button">
+            Abrir invitación
+        </button>
+
+    </section>
+
+
+    <!-- PANTALLA 2: TARJETA DECORADA -->
+
+    <section class="invitacion-final"
+             id="invitacionFinal"
+             aria-hidden="true">
+
+        <article class="tarjeta-final">
+
+            <p class="subtitulo">
+                Mi Primera Comunión
+            </p>
+
+            <h3>Luis Daniel Ledesma</h3>
+
+            <p class="mensaje-final">
+                Jesús, tú que eres luz,
+                ilumina mis pasos.
+                Tú que eres amor,
+                guía mi corazón.
+                En este día tan especial
+                me alegra compartir contigo
+                este momento tan especial.
+            </p>
+
+            <div class="separador">✦</div>
+
+            <p class="proximamente">
+                ¡Quiero compartir con vos
+                la alegría de este día tan especial!
+            </p>
+
+        </article>
+
+        <button id="verCelebracion"
+                class="boton-continuar"
+                type="button">
+            Ver detalles de la celebración
+        </button>
+
+        <button id="volver" type="button">
+            Volver al sobre
+        </button>
+
+    </section>
+
+
+    <!-- PANTALLA 3: CELEBRACIÓN -->
+
+    <section class="pantalla-celebracion"
+             id="pantallaCelebracion"
+             aria-hidden="true">
+
+        <section class="datos-fiesta">
+
+            <h3>¡Celebremos juntos!</h3>
+
+            <p class="introduccion-fiesta">
+                Te invito a compartir la fiesta
+                de mi Primera Comunión.
+            </p>
+
+            <div class="dato">
+                <span class="icono-dato">✧</span>
+                <p class="etiqueta-dato">Fecha</p>
+                <p>Sábado 28 de noviembre de 2026</p>
+            </div>
+
+            <div class="dato">
+                <span class="icono-dato">◷</span>
+                <p class="etiqueta-dato">Hora</p>
+                <p>18:00 hs</p>
+            </div>
+
+            <div class="dato">
+                <span class="icono-dato">⌖</span>
+                <p class="etiqueta-dato">Lugar</p>
+                <p>Salón Kids de la San Juan</p>
+                <p>San Juan 960, Tucumán</p>
+            </div>
+
+            <a class="boton-fiesta"
+               href="https://www.google.com/maps/search/?api=1&amp;query=San+Juan+960+Tucuman"
+               target="_blank"
+               rel="noopener noreferrer">
+                Cómo llegar
+            </a>
+
+            <div class="confirmacion">
+
+                <button class="boton-fiesta"
+                        id="confirmar"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="opcionesWhatsapp">
+                    Confirmar asistencia
+                    <p class="fecha-limite">
+                        Por favor, confirmá tu asistencia
+                        hasta el sábado 14 de noviembre de 2026.
+                        Gracias.
+                    </p>
+                </button>
+
+                <div class="opciones-whatsapp"
+                     id="opcionesWhatsapp"
+                     hidden>
+
+                    <p>
+                        ¿A quién querés enviar tu confirmación?
+                    </p>
+
+                    <a class="boton-whatsapp"
+                       id="whatsappMama"
+                       href="#"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Confirmar con mamá
+                    </a>
+
+                    <a class="boton-whatsapp"
+                       id="whatsappPapa"
+                       href="#"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Confirmar con papá
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <button id="volverInvitacion"
+                class="boton-regresar"
+                type="button">
+            Volver a la invitación
+        </button>
+
+    </section>
+
+</main>
+
+<script src="animacion.js"></script>
+</body>
+</html>
