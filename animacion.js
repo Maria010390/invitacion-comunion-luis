@@ -156,3 +156,43 @@ botonConfirmar.addEventListener("click", () => {
         String(mostrar)
     );
 });
+// Música de fondo
+const musicaFondo = document.getElementById("musicaFondo");
+const botonMusica = document.getElementById("botonMusica");
+
+musicaFondo.volume = 0.35;
+
+function actualizarBotonMusica() {
+    const reproduciendo = !musicaFondo.paused;
+
+    botonMusica.textContent = reproduciendo ? "🔊" : "🔇";
+    botonMusica.setAttribute(
+        "aria-label",
+        reproduciendo ? "Pausar música" : "Reproducir música"
+    );
+}
+
+async function reproducirMusica() {
+    try {
+        await musicaFondo.play();
+    } catch (error) {
+        console.log("La música necesita activarse manualmente.");
+    }
+
+    actualizarBotonMusica();
+}
+
+botonMusica.addEventListener("click", () => {
+    if (musicaFondo.paused) {
+        reproducirMusica();
+    } else {
+        musicaFondo.pause();
+        actualizarBotonMusica();
+    }
+});
+
+musicaFondo.addEventListener("play", actualizarBotonMusica);
+musicaFondo.addEventListener("pause", actualizarBotonMusica);
+
+// Comenzar al abrir el sobre
+boton.addEventListener("click", reproducirMusica);

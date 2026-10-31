@@ -1112,3 +1112,27 @@ h2 {
     border: 1px solid #E5D8BE;
     border-radius: 10px;
 }
+/* Botón de música */
+.boton-musica {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    background: #B69A65;
+    color: white;
+    border: 1px solid #E5D8BE;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.boton-musica:hover {
+    background: #9B8050;
+}
