@@ -1136,11 +1136,47 @@ h2 {
 .boton-musica:hover {
     background: #9B8050;
 }
-
 .oracion-jesus {
     margin-bottom: 28px;
 }
 
 .mensaje-especial {
     margin-top: 0;
+}
+
+/* Texto breve de la tarjeta interior del sobre */
+.tarjeta-contenido .mensaje {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: #786647;
+}
+
+@media (max-width: 480px) {
+    .tarjeta-contenido .mensaje {
+        font-size: 10px;
+    }
+}
+/* Separación de los mensajes de la tarjeta final */
+.tarjeta-final .mensaje-jesus-final {
+    margin-bottom: 25px;
+}
+
+.tarjeta-final .mensaje-especial-final {
+    margin-bottom: 0;
+}
+.invitacion-final.visible .tarjeta-final .mensaje-jesus-final {
+    animation-delay: 1.4s;
+}
+
+.invitacion-final.visible .tarjeta-final .mensaje-especial-final {
+    animation-delay: 1.9s;
+}
+
+.invitacion-final.visible .tarjeta-final .separador {
+    animation-delay: 2.5s;
+}
+
+.invitacion-final.visible .tarjeta-final .proximamente {
+    animation-delay: 3s;
 }
